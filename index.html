@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yana - Bienestar Emocional</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Yana</h1>
+        <nav>
+            <button data-section="home" class="active">Inicio</button>
+            <button data-section="login">Iniciar Sesión</button>
+            <button data-section="register">Crear Cuenta</button>
+            <button data-section="about">¿Qué es Yana?</button>
+            <button data-section="policies">Políticas</button>
+            <button data-section="emotions">Registro Emocional</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- INICIO -->
+        <section id="home" class="active section">
+            <h2>Bienvenido a Yana</h2>
+            <p>
+                Tu compañera para gestionar tus emociones y mejorar tu bienestar día a día.
+            </p>
+            <p>
+                Regístrate o inicia sesión para comenzar tu viaje hacia una vida emocional más saludable.
+            </p>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Bienestar" />
+        </section>
+
+        <!-- INICIAR SESIÓN -->
+        <section id="login" class="section">
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <label for="login-email">Correo Electrónico</label>
+                <input type="email" id="login-email" required placeholder="correo@ejemplo.com" />
+                
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" required placeholder="Tu contraseña" />
+                
+                <button type="submit" class="button">Ingresar</button>
+            </form>
+            <p id="login-msg" class="message"></p>
+        </section>
+
+        <!-- CREAR CUENTA -->
+        <section id="register" class="section">
+            <h2>Crear Cuenta</h2>
+            <form id="register-form">
+                <label for="reg-name">Nombre Completo</label>
+                <input type="text" id="reg-name" required placeholder="Tu nombre" />
+
+                <label for="reg-email">Correo Electrónico</label>
+                <input type="email" id="reg-email" required placeholder="correo@ejemplo.com" />
+
+                <label for="reg-password">Contraseña</label>
+                <input type="password" id="reg-password" required placeholder="Crea una contraseña" />
+
+                <button type="submit" class="button">Registrar</button>
+            </form>
+            <p id="register-msg" class="message"></p>
+        </section>
+
+        <!-- ¿QUÉ ES YANA? -->
+        <section id="about" class="section">
+            <h2>¿Qué es Yana?</h2>
+            <p>
+                Yana es una aplicación diseñada para ayudarte a registrar, monitorear y gestionar tus emociones de forma sencilla y segura.
+                Mediante herramientas personalizadas, mensajes motivacionales y una comunidad de apoyo, te acompañamos en tu bienestar emocional.
+            </p>
+            <ul>
+                <li>Registro diario de emociones con notas personales.</li>
+                <li>Notificaciones personalizadas para ayudarte a mantener el hábito.</li>
+                <li>Visualización gráfica de tu progreso emocional.</li>
+                <li>Conexión con una comunidad que comparte tus inquietudes.</li>
+                <li>Opciones de personalización para adaptar la app a ti.</li>
+            </ul>
+        </section>
+
+        <!-- POLÍTICAS -->
+        <section id="policies" class="section">
+            <h2>Políticas de Privacidad y Seguridad</h2>
+            <p>
+                En Yana valoramos tu privacidad y seguridad. Toda la información que ingresas está protegida mediante cifrado y autenticación segura.
+            </p>
+            <ul>
+                <li>Datos personales almacenados con altos estándares de seguridad.</li>
+                <li>Control total para desactivar notificaciones o eliminar tu cuenta.</li>
+                <li>No compartimos tu información con terceros sin tu consentimiento.</li>
+                <li>Actualizaciones constantes para garantizar la protección de tus datos.</li>
+            </ul>
+        </section>
+
+        <!-- REGISTRO EMOCIONAL -->
+        <section id="emotions" class="section">
+            <h2>Registro Diario de Emociones</h2>
+            <form id="emotion-form">
+                <label for="mood-select">Selecciona tu estado de ánimo</label>
+                <select id="mood-select" required>
+                    <option value="" disabled selected>-- Escoge una emoción --</option>
+                    <option value="feliz">Feliz</option>
+                    <option value="triste">Triste</option>
+                    <option value="ansioso">Ansioso</option>
+                    <option value="enojado">Enojado</option>
+                    <option value="relajado">Relajado</option>
+                    <option value="estresado">Estresado</option>
+                </select>
+
+                <label for="mood-notes">Notas adicionales (opcional)</label>
+                <textarea id="mood-notes" rows="4" placeholder="Escribe aquí cómo te sientes..."></textarea>
+
+                <button type="submit" class="button">Guardar Registro</button>
+            </form>
+            <p id="emotion-msg" class="message"></p>
+
+            <div id="emotion-history" class="card" style="display:none;">
+                <h3>Historial de emociones</h3>
+                <ul id="emotion-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yana. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

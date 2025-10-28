@@ -1,0 +1,47 @@
+/* Estilos adicionales para elementos específicos */
+
+/* Estilo para botones */
+.button {
+    background-color: #4a148c;  /* Color principal */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #6a1b9a;  /* Color de hover */
+    transform: translateY(-3px);  /* Sutil elevación del botón */
+}
+
+/* Estilo para las tarjetas (cards) */
+.card {
+    background-color: #fff;
+    border-radius: 12px;  /* Bordes más redondeados */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);  /* Sombra más suave */
+    padding: 20px;
+    margin: 15px;
+    transition: transform 0.3s, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);  /* Efecto de elevación */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);  /* Sombra más intensa en hover */
+}
+
+/* Responsividad para botones y tarjetas */
+@media (max-width: 768px) {
+    .button {
+        padding: 10px 20px;
+        font-size: 0.9rem;  /* Ajustar tamaño de fuente en móviles */
+    }
+
+    .card {
+        padding: 15px;  /* Menos padding en pantallas pequeñas */
+        margin: 10px;   /* Menos margen en móviles */
+    }
+}
