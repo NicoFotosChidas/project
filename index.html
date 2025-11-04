@@ -1,168 +1,376 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membresía Gratuita de Yana</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membresía Gratuita de Yana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === ESTILOS GENERALES === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f3e5f5, #ede7f6);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        header {
-            background-color: #6a1b9a;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            border-bottom: 5px solid #e1bee7;
-        }
+    header {
+      background-color: #4a148c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(74, 20, 140, 0.5);
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
 
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #6a1b9a;
-        }
+    nav {
+      margin-top: 15px;
+    }
 
-        main {
-            padding: 40px 20px;
-        }
+    nav button {
+      background-color: #6a1b9a;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px 18px;
+      margin: 0 8px 10px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
 
-        section {
-            margin-bottom: 30px;
-            background-color: #e1bee7;
-            border-radius: 8px;
-            padding: 20px;
-        }
+    nav button:hover,
+    nav button.active {
+      background-color: #9c27b0;
+      box-shadow: 0 0 10px #9c27b0;
+    }
 
-        .ventajas {
-            background-color: #ab47bc;
-            padding: 20px;
-            border-radius: 8px;
-            color: white;
-        }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px 40px 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
 
-        .descarga {
-            background-color: #9575cd;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 30px;
-        }
+    section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
 
-        a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 12px 30px;
-            background-color: #1e88e5;
-            border-radius: 30px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+    section.active {
+      display: block;
+      opacity: 1;
+    }
 
-        a:hover {
-            background-color: #1565c0;
-            transform: translateY(-2px);
-        }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #4a148c;
+      border-bottom: 3px solid #9c27b0;
+      padding-bottom: 5px;
+    }
 
-        footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #6a1b9a;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 400px;
+    }
 
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
+    label {
+      font-weight: 600;
+      color: #6a1b9a;
+    }
 
-        ul li {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
+    input, select, textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+    }
 
-        /* Responsividad */
-        @media (max-width: 768px) {
-            header, footer {
-                padding: 20px;
-            }
+    input:focus, select:focus, textarea:focus {
+      border-color: #9c27b0;
+      outline: none;
+      box-shadow: 0 0 6px #9c27b0;
+    }
 
-            h1 {
-                font-size: 2rem;
-            }
+    .button {
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: background-color 0.3s ease;
+      align-self: flex-start;
+    }
 
-            h2 {
-                font-size: 1.5rem;
-            }
+    .button:hover {
+      background-color: #9c27b0;
+    }
 
-            main {
-                padding: 20px;
-            }
+    .message {
+      font-weight: bold;
+      min-height: 20px;
+    }
 
-            a {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      background-color: #4a148c;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+      nav button {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+        margin: 5px;
+      }
+
+      main {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Membresía Gratuita de Yana</h1>
-    </header>
-    
-    <main>
-        <section id="introduccion">
-            <h2>¿Cómo Funciona la Membresía Gratuita?</h2>
-            <p>
-                La membresía gratuita de Yana te permite acceder a todas las funcionalidades básicas de nuestra aplicación sin ningún costo. Simplemente regístrate y comienza a explorar las herramientas que te ayudarán a gestionar tus emociones y mejorar tu bienestar.
-            </p>
-            <p>
-                Durante el período de prueba, podrás disfrutar de una experiencia completa y descubrir cómo Yana puede hacer una diferencia en tu vida diaria.
-            </p>
-        </section>
+  <header>
+    <h1>Membresía Gratuita de Yana</h1>
+    <nav>
+      <button class="active" data-section="introduccion">Inicio</button>
+      <button data-section="login">Iniciar Sesión</button>
+      <button data-section="registro">Registrarse</button>
+      <button data-section="emotions">Emociones</button>
+    </nav>
+  </header>
 
-        <section class="ventajas">
-            <h2>Ventajas de la Membresía Gratuita</h2>
-            <ul>
-                <li>Acceso ilimitado a las herramientas de registro de emociones.</li>
-                <li>Mensajes motivacionales personalizados para mantenerte inspirado.</li>
-                <li>Estadísticas y gráficos para visualizar tu progreso emocional.</li>
-                <li>Consejos personalizados basados en tus patrones emocionales.</li>
-                <li>Opción de cancelar en cualquier momento sin cargos.</li>
-            </ul>
-        </section>
+  <main>
+    <!-- Introducción -->
+    <section id="introduccion" class="active">
+      <h2>Bienvenido a Yana</h2>
+      <p>Yana te ayuda a registrar y entender tus emociones diarias para mejorar tu bienestar emocional.</p>
+      <div class="card">
+        <p>Comienza iniciando sesión o registrándote gratuitamente.</p>
+      </div>
+    </section>
 
-        <section class="descarga">
-            <h2>¡Descarga Yana Ahora!</h2>
-            <p>
-                No esperes más para empezar tu viaje hacia el bienestar. Descarga Yana y aprovecha nuestra membresía gratuita. Haz clic en el botón de abajo para comenzar.
-            </p>
-            <a href="https://www.ejemplo.com/descarga" target="_blank">Descargar Yana</a>
-        </section>
-    </main>
+    <!-- Login -->
+    <section id="login">
+      <h2>Iniciar Sesión</h2>
+      <form id="login-form">
+        <label for="login-email">Correo electrónico</label>
+        <input type="email" id="login-email" name="login-email" required />
 
-    <footer>
-        <p>&copy; 2025 Yana. Todos los derechos reservados.</p>
-    </footer>
+        <label for="login-password">Contraseña</label>
+        <input type="password" id="login-password" name="login-password" required />
+
+        <button type="submit" class="button">Entrar</button>
+        <p id="login-msg" class="message"></p>
+      </form>
+    </section>
+
+    <!-- Registro -->
+    <section id="registro">
+      <h2>Crear Cuenta</h2>
+      <form id="register-form">
+        <label for="reg-name">Nombre</label>
+        <input type="text" id="reg-name" name="reg-name" required />
+
+        <label for="reg-email">Correo electrónico</label>
+        <input type="email" id="reg-email" name="reg-email" required />
+
+        <label for="reg-password">Contraseña</label>
+        <input type="password" id="reg-password" name="reg-password" required />
+
+        <button type="submit" class="button">Registrarse</button>
+        <p id="register-msg" class="message"></p>
+      </form>
+    </section>
+
+    <!-- Registro de emociones -->
+    <section id="emotions">
+      <h2>Registro de Emociones</h2>
+      <form id="emotion-form">
+        <label for="mood-select">¿Cómo te sientes hoy?</label>
+        <select id="mood-select" name="mood-select">
+          <option value="">Selecciona una emoción</option>
+          <option value="feliz">Feliz</option>
+          <option value="triste">Triste</option>
+          <option value="ansioso">Ansioso</option>
+          <option value="motivado">Motivado</option>
+          <option value="estresado">Estresado</option>
+        </select>
+
+        <label for="mood-notes">Notas o pensamientos</label>
+        <textarea id="mood-notes" name="mood-notes" placeholder="Describe brevemente cómo te sientes..."></textarea>
+
+        <button type="submit" class="button">Guardar Emoción</button>
+        <p id="emotion-msg" class="message"></p>
+      </form>
+
+      <div class="card" id="emotion-history">
+        <h3>Historial de Emociones</h3>
+        <ul id="emotion-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Yana. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // === FUNCIONALIDAD ===
+    document.addEventListener("DOMContentLoaded", () => {
+      const navButtons = document.querySelectorAll("nav button");
+      const sections = document.querySelectorAll("main section");
+
+      function activateSection(id) {
+        sections.forEach(sec => {
+          sec.classList.toggle("active", sec.id === id);
+        });
+      }
+
+      function activateNavButton(id) {
+        navButtons.forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.section === id);
+        });
+      }
+
+      // Navegación
+      navButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.section;
+          activateSection(target);
+          activateNavButton(target);
+        });
+      });
+
+      // Login
+      const loginForm = document.getElementById("login-form");
+      const loginMsg = document.getElementById("login-msg");
+
+      loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const email = loginForm["login-email"].value.trim();
+        const password = loginForm["login-password"].value.trim();
+
+        if (!email || !password) {
+          loginMsg.textContent = "Por favor completa todos los campos.";
+          loginMsg.style.color = "red";
+          return;
+        }
+
+        loginMsg.style.color = "green";
+        loginMsg.textContent = `¡Bienvenido de nuevo, ${email}!`;
+        loginForm.reset();
+
+        activateSection("emotions");
+        activateNavButton("emotions");
+      });
+
+      // Registro
+      const registerForm = document.getElementById("register-form");
+      const registerMsg = document.getElementById("register-msg");
+
+      registerForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const name = registerForm["reg-name"].value.trim();
+        const email = registerForm["reg-email"].value.trim();
+        const password = registerForm["reg-password"].value.trim();
+
+        if (!name || !email || !password) {
+          registerMsg.textContent = "Por favor completa todos los campos.";
+          registerMsg.style.color = "red";
+          return;
+        }
+
+        registerMsg.style.color = "green";
+        registerMsg.textContent = `Cuenta creada exitosamente. ¡Bienvenido, ${name}!`;
+        registerForm.reset();
+
+        activateSection("emotions");
+        activateNavButton("emotions");
+      });
+
+      // Emociones
+      const emotionForm = document.getElementById("emotion-form");
+      const emotionMsg = document.getElementById("emotion-msg");
+      const emotionList = document.getElementById("emotion-list");
+
+      const STORAGE_KEY = "yana_emotions";
+
+      function loadEmotionHistory() {
+        const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        emotionList.innerHTML = "";
+        data.forEach(entry => {
+          const li = document.createElement("li");
+          li.textContent = `${entry.date} - ${entry.mood}: ${entry.notes}`;
+          emotionList.appendChild(li);
+        });
+      }
+
+      loadEmotionHistory();
+
+      emotionForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const mood = emotionForm["mood-select"].value;
+        const notes = emotionForm["mood-notes"].value.trim();
+
+        if (!mood) {
+          emotionMsg.textContent = "Por favor selecciona un estado de ánimo.";
+          emotionMsg.style.color = "red";
+          return;
+        }
+
+        const data = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        const newEntry = {
+          mood,
+          notes,
+          date: new Date().toLocaleString()
+        };
+        data.push(newEntry);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+
+        emotionMsg.textContent = "Emoción guardada con éxito.";
+        emotionMsg.style.color = "green";
+        emotionForm.reset();
+        loadEmotionHistory();
+      });
+    });
+  </script>
 </body>
 </html>
